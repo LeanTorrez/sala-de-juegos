@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "./dist/sala-de-juego/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
