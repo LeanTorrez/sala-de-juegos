@@ -1,23 +1,25 @@
+
 import { Routes } from '@angular/router';
-import { HomeComponent } from './component/home/home.component';
-import { LoginComponent } from './component/login/login.component';
-import { QuienSoyComponent } from './component/quien-soy/quien-soy.component';
 
 export const routes: Routes = [
     {
         path:"",
-        component:HomeComponent
+        loadComponent: () => import('./component/home/home.component').then(m => m.HomeComponent)
     },
     {
         path:"login",
-        component:LoginComponent
+        loadComponent: () => import('./component/login/login.component').then(m => m.LoginComponent)
     },
     {
         path:"home",
-        component:HomeComponent
+        loadComponent: () => import('./component/home/home.component').then(m => m.HomeComponent)
     },
     {
         path:"quien-soy",
-        component:QuienSoyComponent
+        loadComponent: () => import('./component/quien-soy/quien-soy.component').then(m => m.QuienSoyComponent)
+    },
+    {
+        path:"registro",
+        loadComponent: () => import('./component/registro/registro.component').then(m => m.RegistroComponent)
     },
 ];

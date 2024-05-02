@@ -1,1 +1,64 @@
-<p>home works!</p>
+<!-- this.authFire.enSesion -->
+@if(this.authFire.enSesion){
+    <!-- Ingreso en la APP -->
+    <div class="container" style="background-color: grey; border-radius: 10px;">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center">
+                    Bienvenido {{this.authFire.emailUsuario}}
+                </h3>
+            </div>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+
+            <button type="button" class="btn btn-secondary mx-5">
+                <img src="../../../assets/ahorcado.png" alt="error" class="img-thumbnail" id="img-juegos">
+                <br>Ahorcado
+            </button>
+
+            <button type="button" class="btn btn-secondary mx-5">
+                <img src="../../../assets/memotest.png" alt="error" class="img-thumbnail" id="img-juegos"
+            > <br>Memotest</button>
+
+            <button type="button" class="btn btn-secondary mx-5">
+                <img src="../../../assets/preguntados.png" alt="error" class="img-thumbnail" id="img-juegos">
+                <br>Preguntados
+            </button>
+        </div>  
+        
+    </div>
+}@else{
+    <!-- 
+    No esta logeado
+    aca uno para registro y login 
+    -->
+    <div class="container" style="background-color: grey; border-radius: 10px;">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center">
+                    Bienvenido
+                </h3>
+                <p class="text-center">
+                    Es necesario estar logeado para poder acceder a los juegos
+                </p>
+            </div>
+        </div>
+
+        <div style="justify-content: center;align-items: center;display: flex;">
+            <img src="../../../assets/not-login-icon.png" alt="error" class="img-thumbnail">
+        </div>
+
+        <div class="row justify-content-center">
+            
+            <div class="col">
+                <button routerLink="/registro" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary mx-1"
+            > <fa-icon [icon]="faPencil"></fa-icon>Registrarse</button>  
+            <button routerLink="/login" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary mx-1"
+            > <fa-icon [icon]="faPencil"></fa-icon>Login</button>  
+            </div>
+    
+        </div>
+    </div>
+    
+}

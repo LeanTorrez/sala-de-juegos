@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "sala-juegos-7233a"
+  },
+  "targets": {
+    "sala-juegos-7233a": {
+      "hosting": {
+        "sala-de-juego": [
+          "sala-juegos-7233a"
+        ]
+      }
+    }
   }
 }

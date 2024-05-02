@@ -12,7 +12,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
-          "options": {
+          "options": {      
             "outputPath": "dist/sala-de-juego",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -34,8 +34,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -48,7 +48,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -88,6 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sala-de-juego:build:production",
+              "serveTarget": "sala-de-juego:serve:production"
+            },
+            "development": {
+              "buildTarget": "sala-de-juego:build:development",
+              "serveTarget": "sala-de-juego:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

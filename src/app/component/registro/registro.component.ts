@@ -1,43 +1,42 @@
 import { Component } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faEnvelope, faLock, faDoorOpen, faPencil } from '@fortawesome/free-solid-svg-icons';
-//import { AuthService } from '../../modules/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../modules/auth.service';
-import { RouterLink } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEnvelope, faLock, faDoorOpen, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-registro',
   standalone: true,
-  imports: [FontAwesomeModule, FormsModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [FontAwesomeModule, FormsModule],
+  templateUrl: './registro.component.html',
+  styleUrl: './registro.component.css'
 })
-export class LoginComponent {
+export class RegistroComponent {
   //ICONS FONT AWESOME
   faCarta = faEnvelope;
   faLock = faLock;
   faDoor = faDoorOpen;
   faPencil = faPencil;
+  //Inject
   
-  constructor(
-    private authFire:AuthService,
-    private toast: ToastrService
-  ){}
+  constructor(private authFire:AuthService,
+    private toast : ToastrService,
+  ){
+  }
 
   public email!:string;
   public clave!:string;
 
-  login(){
-
+  registrar(){
     if(this.verificarVacio(this.email) && this.verificarVacio(this.clave) ) return this.toast.info("Relleno lo campos de email o clave","Error");
 
     if(!this.verificarMinimoContraseña(this.clave)) return this.toast.info("La clave necesita tener mas de 5 caracteres","Error");
 
     if(this.verificarEmail(this.email) == null) return this.toast.info("El formato del email es invalido",'Error');
 
-    this.authFire.login(this.email, this.clave);
+
+    this.authFire.registrar(this.email,this.clave);
     return true;
   }
 
@@ -58,22 +57,5 @@ export class LoginComponent {
   verificarMinimoContraseña(clave:string){
     if(clave == undefined) return false;
     return clave.length >= 6;
-  }
-
-  usuario(n:number){
-    switch(n){
-      case 1:
-        this.email = "lean@yahoo.com";
-        this.clave = "asd123";
-        break;
-      case 2:
-        this.email = "juan@gmail.com";
-        this.clave = "asd123";
-        break;
-      case 3:
-        this.email = "nico@hotmail.com";
-        this.clave = "asd123";
-        break;
-    }
   }
 }
