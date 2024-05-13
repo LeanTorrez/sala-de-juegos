@@ -1,47 +1,58 @@
-<div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <div style="border: 2px solid black;height: 100%; display: flex;justify-content: center;">
+<div class="d-flex justify-content-center align-items-center my-5">
 
-            <form>
-              <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-center">
-                <p class="lead fw-normal mb-0 me-3">Iniciar Sesion</p>
-              </div>
-
-
-              <div data-mdb-input-init class="form-outline mb-4">
-                <div class="col mx-2">
-                    <fa-icon [icon]="faCarta"></fa-icon>
-                    <label class="form-label mx-1" for="form3Example3">Email</label>
+  <div class="container border border-dark rounded bg-dark" style="height: 400px;width: 50%;">
+  
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <!-- style="border: 2px solid black;height: 100%; display: flex;justify-content: center; -->
+          <div>
+              <form>
+                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-center">
+                  <p class="lead fw-normal mb-0 me-3 text-light">Iniciar Sesion</p>
                 </div>
-                <input name="email" [(ngModel)]="email" type="email" id="form3Example3" class="form-control form-control-lg"
-                  placeholder="Ingrese un Email Valido" />
-              </div>
-    
-              <div data-mdb-input-init class="form-outline mb-3">
-                <div class="col mx-2">
-                    <fa-icon [icon]="faLock"></fa-icon>
-                    <label class="form-label mx-2" for="form3Example4">Contraseña</label>
+  
+  
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <div class="col mx-2">
+                      <fa-icon [icon]="faCarta"></fa-icon>
+                      <label class="form-label mx-1 text-light" for="form3Example3">Email</label>
+                  </div>
+                  <input name="email" [(ngModel)]="email" type="email" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Ingrese un Email Valido" />
                 </div>
-                <input name="clave" [(ngModel)]="clave" type="password" id="form3Example4" class="form-control form-control-lg"
-                  placeholder="Ingrese Contraseña" />
-              </div> 
-                <button (click)="usuario(1)" class="btn btn-primary" >Usuario 1</button>
-                <button (click)="usuario(2)" class="btn btn-primary" >Usuario 2</button>
-                <button (click)="usuario(3)" class="btn btn-primary" >Usuario 3</button>
-              </form>
+      
+                <div data-mdb-input-init class="form-outline mb-3">
+                  <div class="col mx-2">
+                      <fa-icon [icon]="faLock"></fa-icon>
+                      <label class="form-label mx-2 text-light" for="form3Example4">Contraseña</label>
+                  </div>
+                  <input name="clave" [(ngModel)]="clave" type="password" id="form3Example4" class="form-control form-control-lg"
+                    placeholder="Ingrese Contraseña" />
+                </div>            
+               </form>
+  
+              </div>
+        </div>
+        <div class="row d-inline-flex">
+          <div class="col">
+            <div class="justify-content-center d-flex">
+              <button (click)="usuario(1)" class="btn btn-secondary mx-2" >Usuario 1</button>
+              <button (click)="usuario(2)" class="btn btn-secondary mx-2" >Usuario 2</button>
+              <button (click)="usuario(3)" class="btn btn-secondary mx-2" >Usuario 3</button>
 
             </div>
-      </div>
-      <div class="row justify-content-center align-items-center">
-        <div class="col">
-          <div class="d-flex justify-content-center align-items-center mx-5">
-            <button routerLink="/registro" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg mx-4"
-            style="padding-left: 2.5rem; padding-right: 2.5rem;"> <fa-icon [icon]="faPencil"></fa-icon>Registrarse</button>  
-            <button (click)="login()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
-            style="padding-left: 2.5rem; padding-right: 2.5rem;"> <fa-icon [icon]="faDoor"></fa-icon> Login</button>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+          <div class="col">
+            <div class="d-flex justify-content-center align-items-center mx-5">
+              <button routerLink="/registro" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-md mx-4"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;"> <fa-icon [icon]="faPencil"></fa-icon>Registrarse</button>  
+              <button (click)="login()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-md"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;"> <fa-icon [icon]="faDoor"></fa-icon> Login</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+</div>

@@ -22,4 +22,8 @@ export const routes: Routes = [
         path:"registro",
         loadComponent: () => import('./component/registro/registro.component').then(m => m.RegistroComponent)
     },
+    {
+        path:"juegos",
+        loadChildren: () => import("./component/juegos/juegos.routes")
+    }
 ];

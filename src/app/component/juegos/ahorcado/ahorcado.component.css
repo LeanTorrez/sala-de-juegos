@@ -1,0 +1,17 @@
+#imagen{
+    display: flex;
+    height: 680px;
+    background-repeat: no-repeat;
+}
+.span-ahorcado{
+    background-color: white;
+    color: black;
+    font-size: 50px;
+    border-radius: 10px;
+}
+.span-exito{
+    background-color: rgb(32, 192, 32);
+    color: black;
+    font-size: 50px;
+    border-radius: 10px; 
+}

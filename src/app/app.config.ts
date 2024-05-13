@@ -7,12 +7,13 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FIREBASE_OPTIONS } from "@angular/fire/compat";
-
+import { provideHttpClient } from "@angular/common/http";
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [ 
+    provideHttpClient(),
     provideAnimations(),
     provideToastr({timeOut:1200, preventDuplicates:true}),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },

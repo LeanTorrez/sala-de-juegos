@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faEnvelope, faLock, faDoorOpen, faPencil } from '@fortawesome/free-solid-svg-icons';
-//import { AuthService } from '../../modules/auth.service';
+import {  faLock, faDoorOpen, faPencil, } from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../modules/auth.service';
 import { RouterLink } from '@angular/router';

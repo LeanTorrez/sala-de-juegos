@@ -1,0 +1,53 @@
+<p class="text-center text-light">Ahorcado</p>
+<div class="d-flex justify-content-center align-items-center my-5">
+    
+    <div class="container border border-dark rounded bg-dark">
+        <div class="row">
+            <div class="col">
+                <p class="text-start text-light" style="font-size: 20px;"> 
+                    @if(this.contadorErrores!=6){
+                        Te quedan 
+                        {{6-this.contadorErrores}} 
+                        Intentos
+                    }@else{
+                        PERDISTE TODAS TUS VIDAS
+                    }
+                </p>
+            </div>
+            
+            <div class="col">
+                <div class="justify-content-end d-flex">
+                    <button class="btn btn-primary btn-sm" style="border-radius: 55px;"
+                    (click)="reiniciarAhorcado()">REINICIAR<br> 
+                    <fa-icon [icon]="reinicio"></fa-icon></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="./../../../../assets/juegos/ahorcado/ahorcado{{errores}}.png" alt="ahorcado" id="imagen">
+            </div>
+        </div>
+
+        <div class="container" style="background-color: grey; width: auto;border-radius: 10px;">
+            <div class="text-center">
+                @for (item of palabraSelec; track $index) {
+                    <span class="mx-1 text-center span-ahorcado"
+                    id="caracter{{$index}}">___</span>
+                }
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-auto">
+            @for (letra of alfabeto; track $index) {
+                <button type="text" class="btn btn-primary btn-lg mx-1" 
+                id="letra{{letra}}" 
+                (click)="letraAhorcado(letra)">{{letra}} index {{$index}}</button>
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>

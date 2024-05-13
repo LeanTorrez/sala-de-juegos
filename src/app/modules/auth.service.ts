@@ -12,6 +12,7 @@ export class AuthService {
 
   public enSesion: boolean = false;
   public emailUsuario!:string | null | undefined;
+  public userUid!: string | null | undefined;
   toast = inject(ToastrService);
 
   constructor(
@@ -21,10 +22,14 @@ export class AuthService {
   ){
   }
 
+
+  //get user logged fijarse
+
   async login(email:string,clave:string){
     this.authFire.signInWithEmailAndPassword(email, clave).then((user) => {
       this.enSesion = true;
       this.emailUsuario = user.user?.email;
+      this.userUid = user.user?.uid;
 
       let col = collection(this.fireStore,"logins");
       addDoc(col, {"usuario": this.emailUsuario, "fecha-ingreso" : new Date});
@@ -41,6 +46,7 @@ export class AuthService {
     .then(user => {
       this.enSesion = true;
       this.emailUsuario = user.user?.email;
+      this.userUid = user.user?.uid;
 
       let col = collection(this.fireStore,"logins");
       addDoc(col, {"usuario": this.emailUsuario, "fecha-ingreso" : new Date});
@@ -76,5 +82,6 @@ export class AuthService {
   desloguear(){
     this.enSesion = false;
     this.emailUsuario = undefined;
+    this.userUid = undefined;
   }
 }
