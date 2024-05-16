@@ -1,0 +1,9 @@
+#chatBtn{
+    display: flex;
+    position: fixed;
+    left: 5rem;
+    bottom: 5rem;
+    border-radius: 35px;
+    height: 70px;
+    width: 70px;
+}

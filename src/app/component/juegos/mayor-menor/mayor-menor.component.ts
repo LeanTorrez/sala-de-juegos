@@ -4,6 +4,8 @@ import { httpCarta } from "./../../../Interface/getHttpCarta";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AuthService } from './../../../modules/auth.service';
 
 @Component({
   selector: 'app-mayor-menor',
@@ -27,8 +29,18 @@ export class MayorMenorComponent {
   constructor(
     private srvCartas:CartasService,
     private api:HttpClient,
-    private toast:ToastrService
+    private toast:ToastrService,
+    private router:Router,
+    private auth:AuthService
   ){
+    if(!auth.enSesion){
+      router.navigate(["/home"]);
+    }else{
+      this.empezarJuegoMayorMenor();
+    }
+  }
+
+  empezarJuegoMayorMenor(){
     this.srvCartas.getCartasMayorMenor()
     .then(carta => {
       this.deck_id = carta.deck_id;
@@ -107,6 +119,7 @@ export class MayorMenorComponent {
 
               this.puntos = 0;
               console.log(this.puntos + " false en mayor");
+
             }
             break;
         }

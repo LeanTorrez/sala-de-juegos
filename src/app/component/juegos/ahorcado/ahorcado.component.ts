@@ -19,20 +19,29 @@ export class AhorcadoComponent {
   public contadorErrores:number = 0;
   public errores:string = "0";
 
-  public palabras= ["ARBOL","BICICLETA","AVION","SILLA"];
+  public terminacionPartida:boolean = false;
+  public terminacionMensaje:string = "GANASTE LA PARTIDA";
+
+  public palabras= ["ARBOL","BICICLETA","AVION","SILLA","TECLADO","AUTO","ABECEDARIO",
+                    "MAESTRA","ARGENTINA","CHILE","URUGUAY","COLOMBIA","ALUMNO","HELADO",
+                    "PELADO"];
   public palabraSelec!:string;
 
   public alfabeto = ["A","B","C","D","E","F","G","H","I",
                      "J","K","L","M","N","O","P","R",
                      "S","T","U","V","W","X","Y","Z"];
-      
+
+  /* public alfabeto = ["Q","W","E","R","T","Y","U","I","O","P",
+                     "A","S","D","F","G","H","J","K","L","Ñ",
+                     "Z","X","C","V","B","N","M"]; */
+  
   constructor(
     private authFire:AuthService,
     private router:Router
   ){
-    /* if(!authFire.enSesion){
+    if(!authFire.enSesion){
       router.navigate(["/home"]);
-    } */
+    }
   }
 
   letraAhorcado(letra:string){
@@ -42,6 +51,7 @@ export class AhorcadoComponent {
     if(this.palabraSelec.includes(this.caracter)){
       if(this.contadorExitos == this.palabraSelec.length)
         return console.log("GANASTE");
+
       if(this.contadorErrores >= 6) 
         return false;
 
@@ -57,7 +67,7 @@ export class AhorcadoComponent {
       letra?.classList.add("btn-success");
 
       if(this.contadorExitos == this.palabraSelec.length)
-        return console.log("GANASTE");
+        this.configuracionMensajeTerminacion("GANASTE LA PARTIDA");
 
       console.log("Esta en la palabra");
     }else{
@@ -76,15 +86,32 @@ export class AhorcadoComponent {
       letra?.classList.add("btn-danger");
 
       if(this.contadorErrores >= 6) 
-        return console.error("Sos boleta");
+        this.configuracionMensajeTerminacion("PERDISTE LA PARTIDA");
         
       console.log("No esta en la palabra");
     }
   }
 
-  ngOnInit(){
-    this.palabraSelec = this.palabras[1];
+  configuracionMensajeTerminacion(mensaje:string){
+    this.terminacionPartida = true; 
+    this.terminacionMensaje = mensaje;
   }
+
+  ngOnInit(){
+    this.comienzoJuego();
+  }
+
+  comienzoJuego(){
+    this.terminacionPartida = false;
+    this.palabraSelec = this.palabras[Math.floor(Math.random() * this.palabras.length)];
+
+    /* const div = document.getElementById("terminoPartida");
+    div?.classList.remove("gano");
+    div?.classList.remove("perdio"); */
+
+    this.reiniciarAhorcado();
+  }
+
 
   indexLetras(){
     let indices:number[] = [];

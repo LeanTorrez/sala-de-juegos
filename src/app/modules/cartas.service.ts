@@ -14,7 +14,7 @@ export class CartasService {
   constructor(private api:HttpClient) { }
 
   async getCartasMayorMenor(){
-    const obs = this.api.get("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=3") as Observable<CartaHttp>;
+    const obs = this.api.get("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6") as Observable<CartaHttp>;
     return await new Promise<CartaHttp>((resolve, reject) => {
       obs.subscribe((data: CartaHttp) => {
         resolve(data);

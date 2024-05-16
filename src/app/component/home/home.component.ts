@@ -26,6 +26,7 @@ export class HomeComponent {
   esconderChat($event:boolean){
     this.chat = $event;
   }
+  
   mostrarChat(){
     this.chat = true;
   }

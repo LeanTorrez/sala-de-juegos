@@ -1,5 +1,12 @@
 <app-nav></app-nav>
 
 <router-outlet />
-
-
+@if(this.auth.enSesion){
+    @if(this.chat){
+        <app-chat (mostrarChat)="esconderChat($event)"></app-chat>
+    }@else {
+        <button class="btn btn-light" id="chatBtn" (click)="mostrarChat()">
+            <img src="./../../../assets/chat.png" style="position: absolute;" height="55px" width="45px" alt="chat png">
+        </button>
+    }
+}

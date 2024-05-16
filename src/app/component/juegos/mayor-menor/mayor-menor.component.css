@@ -3,16 +3,23 @@
     height: 777px;
     background-repeat: no-repeat;
 }
-
 #cartaActual,#cartaNueva
 {
     position: absolute;
     top: 28em;
 }
-
 #cartaActual{
     left: 35em;
 }
 #cartaNueva{
     left: 70em;
+}
+#puntos{
+    position: absolute;
+    font-size: 30px;
+    left: 46%;
+}
+.title{
+    position: absolute;
+    left: 45%;
 }

@@ -83,5 +83,6 @@ export class AuthService {
     this.enSesion = false;
     this.emailUsuario = undefined;
     this.userUid = undefined;
+    this.router.navigate(["/home"]);
   }
 }

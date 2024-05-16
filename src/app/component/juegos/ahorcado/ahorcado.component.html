@@ -1,10 +1,10 @@
-<p class="text-center text-light">Ahorcado</p>
+<h3 class="text-center text-light title">Ahorcado</h3>
 <div class="d-flex justify-content-center align-items-center my-5">
     
     <div class="container border border-dark rounded bg-dark">
         <div class="row">
-            <div class="col">
-                <p class="text-start text-light" style="font-size: 20px;"> 
+            <div class="col" id="puntos">
+                <p class="text-start text-light"> 
                     @if(this.contadorErrores!=6){
                         Te quedan 
                         {{6-this.contadorErrores}} 
@@ -15,12 +15,10 @@
                 </p>
             </div>
             
-            <div class="col">
-                <div class="justify-content-end d-flex">
-                    <button class="btn btn-primary btn-sm" style="border-radius: 55px;"
+            <div class="col justify-content-center" id="btnReiniciar">
+                    <button class="btn btn-primary btn-sm"
                     (click)="reiniciarAhorcado()">REINICIAR<br> 
-                    <fa-icon [icon]="reinicio"></fa-icon></button>
-                </div>
+                    <fa-icon [icon]="reinicio"></fa-icon></button>      
             </div>
         </div>
         <div class="row">
@@ -28,6 +26,19 @@
                 <img src="./../../../../assets/juegos/ahorcado/ahorcado{{errores}}.png" alt="ahorcado" id="imagen">
             </div>
         </div>
+        @if(this.terminacionPartida){
+            <div class="card bg-light" id="terminoPartida">
+                <div class="card-header">
+                    <p class="text-center">{{this.terminacionMensaje}}</p>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">La palabra era {{this.palabraSelec}}</p>
+                </div>
+                <div class="card-footer text-muted justify-content-center d-flex">
+                    <button class="btn btn-primary btn-lg" (click)="this.comienzoJuego()">Jugar Otra Vez</button>
+                </div>
+            </div>  
+        }
 
         <div class="container" style="background-color: grey; width: auto;border-radius: 10px;">
             <div class="text-center">
@@ -39,13 +50,13 @@
         </div>
             
         <div class="row">
-            <div class="col-auto">
             @for (letra of alfabeto; track $index) {
-                <button type="text" class="btn btn-primary btn-lg mx-1" 
-                id="letra{{letra}}" 
-                (click)="letraAhorcado(letra)">{{letra}} index {{$index}}</button>
-                }
-            </div>
+                <div class="col d-flex justify-content-center align-items-center">
+                    <button type="text" class="btn btn-primary btn-xl my-1 mx-1" 
+                                id="letra{{letra}}" 
+                                (click)="letraAhorcado(letra)">{{letra}}</button>
+                </div>
+            }
         </div>
     </div>
 
